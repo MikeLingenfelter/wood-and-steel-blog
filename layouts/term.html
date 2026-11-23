@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <h1>{{ .Data.Singular | title }}: {{ .Title }}</h1>
+  {{ $pages := cond (eq .Data.Plural "series") .Pages.ByWeight .Pages.ByDate.Reverse }}
+  {{ if eq .Data.Plural "series" }}
+    <ol class="series-list">
+      {{ range (.Pages.ByDate) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></li>{{ end }}
+    </ol>
+  {{ else }}
+    {{ range $pages }}{{ partial "post-card.html" (dict "page" . "featured" false) }}{{ end }}
+  {{ end }}
+{{ end }}

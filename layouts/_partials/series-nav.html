@@ -1,0 +1,16 @@
+{{ with .GetTerms "series" }}
+  {{ $term := index . 0 }}
+  {{ $parts := $term.Pages.ByDate }}
+  {{ $current := $.Page }}
+  <nav class="series-nav">
+    <p>Part of the series <a href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a></p>
+    {{ range $i, $p := $parts }}
+      {{ if eq $p.RelPermalink $current.RelPermalink }}
+        <div class="series-links">
+          {{ with index $parts (sub $i 1) | and (gt $i 0) }}<a class="prev" href="{{ .RelPermalink }}">&larr; {{ .Title }}</a>{{ end }}
+          {{ with index $parts (add $i 1) | and (lt (add $i 1) (len $parts)) }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} &rarr;</a>{{ end }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </nav>
+{{ end }}

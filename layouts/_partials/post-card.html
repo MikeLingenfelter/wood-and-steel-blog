@@ -1,0 +1,10 @@
+<article class="card{{ if .featured }} featured{{ end }}">
+  {{ with .page }}
+    <a class="card-cover" href="{{ .RelPermalink }}">{{ partial "cover.html" (dict "page" . "width" 1000) }}</a>
+    <div class="card-body">
+      {{ partial "post-meta.html" . }}
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p>{{ .Params.summary | default .Summary | plainify | truncate 220 }}</p>
+    </div>
+  {{ end }}
+</article>

@@ -1,0 +1,10 @@
+{{ define "main" }}
+  {{ $pages := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+  {{ $pager := .Paginate $pages }}
+  {{ range $i, $p := $pager.Pages }}
+    {{ partial "post-card.html" (dict "page" $p "featured" (and (eq $pager.PageNumber 1) (eq $i 0))) }}
+  {{ else }}
+    <p>No posts yet.</p>
+  {{ end }}
+  {{ partial "pagination.html" $pager }}
+{{ end }}
