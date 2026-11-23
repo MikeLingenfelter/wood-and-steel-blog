@@ -6,6 +6,8 @@
   --rule: #d9cdb2;
   --accent: #3f6f8f;
   --accent-ink: #2d5570;
+  --grid: rgba(63, 111, 143, 0.09);
+  --grid-major: rgba(63, 111, 143, 0.16);
   --measure: 42rem;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -19,13 +21,22 @@
     --rule: #3a342d;
     --accent: #7fb0cf;
     --accent-ink: #a3c9e0;
+    --grid: rgba(127, 176, 207, 0.07);
+    --grid-major: rgba(127, 176, 207, 0.12);
   }
 }
 * { box-sizing: border-box; }
 html { font-size: 112.5%; }
 body {
   margin: 0;
-  background: var(--paper);
+  background-color: var(--paper);
+  /* graph paper: faint minor lines every 1rem, stronger every 5rem */
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 5rem 5rem, 5rem 5rem, 1rem 1rem, 1rem 1rem;
   color: var(--ink);
   font-family: var(--serif);
   line-height: 1.65;
@@ -36,10 +47,9 @@ a:hover { color: var(--accent); }
 img { max-width: 100%; height: auto; display: block; }
 
 .site-header { border-bottom: 2px solid var(--ink); background: var(--paper-2); }
-.site-header .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.5rem; padding-top: 1rem; padding-bottom: 0.9rem; }
-.site-title { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
-.site-title span { color: var(--accent); }
-.site-title small { font-size: 0.6em; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); margin-left: 0.4em; }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.5rem; padding-top: 1rem; padding-bottom: 0.9rem; }
+.site-logo { display: block; color: var(--ink); line-height: 0; }
+.site-logo .logo { height: 3.4rem; width: auto; display: block; }
 .site-header nav { font-family: var(--sans); font-size: 0.85rem; display: flex; gap: 1.1rem; }
 .site-header nav a { color: var(--ink-soft); text-decoration: none; }
 .site-header nav a:hover { color: var(--accent); }
