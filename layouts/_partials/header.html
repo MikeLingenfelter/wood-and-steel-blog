@@ -1,7 +1,8 @@
 <header class="site-header">
   <div class="wrap">
-    <a class="site-title" href="{{ "/" | relURL }}">Wood <span>&amp;</span> Steel <small>Workshoppe</small></a>
+    <a class="site-logo" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">{{ partial "logo.html" . }}</a>
     <nav>
+      <a href="{{ "/about/" | relURL }}">About</a>
       <a href="{{ "/series/" | relURL }}">Series</a>
       <a href="{{ "/categories/" | relURL }}">Categories</a>
       <a href="{{ "/index.xml" | relURL }}">RSS</a>
