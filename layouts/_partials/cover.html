@@ -1,0 +1,8 @@
+{{/* Usage: partial "cover.html" (dict "page" . "width" 800) */}}
+{{ $page := .page }}
+{{ with $page.Params.cover }}
+  {{ with $page.Resources.Get . }}
+    {{ $img := .Resize (printf "%dx webp" $.width) }}
+    <img class="cover" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $page.Params.coverAlt | default $page.Title }}" loading="lazy">
+  {{ end }}
+{{ end }}

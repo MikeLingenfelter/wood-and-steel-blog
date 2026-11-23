@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wood-and-steel-blog",
+  "compatibility_date": "2026-11-23",
+  "build": {
+    "command": "hugo --gc --minify"
+  },
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "woodandsteelworkshoppe.com", "custom_domain": true }
+  ]
+}

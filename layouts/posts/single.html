@@ -1,0 +1,28 @@
+{{ define "main" }}
+  <article class="post">
+    <header>
+      <h1>{{ .Title }}</h1>
+      {{ partial "post-meta.html" . }}
+    </header>
+    {{ partial "cover.html" (dict "page" . "width" 1400) }}
+    <div class="content">{{ .Content }}</div>
+    {{ with .Params.attachments }}
+      <section class="attachments">
+        <h2>Downloads</h2>
+        <ul>
+          {{ range . }}
+            {{ if hasPrefix . "http" }}
+              <li><a href="{{ . }}">{{ path.Base . }}</a></li>
+            {{ else }}
+              <li><a href="{{ (path.Join $.RelPermalink .) }}">{{ . }}</a></li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+    {{ partial "series-nav.html" . }}
+    {{ with .GetTerms "tags" }}
+      <p class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a> {{ end }}</p>
+    {{ end }}
+  </article>
+{{ end }}

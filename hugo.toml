@@ -1,0 +1,30 @@
+baseURL = 'https://woodandsteelworkshoppe.com/'
+locale = 'en-us'
+title = 'Wood and Steel Workshoppe'
+copyright = 'Wood and Steel Workshoppe'
+enableRobotsTXT = true
+
+[params]
+  description = 'A maker blog: woodworking, metalworking, 3D printing, CAD and the occasional detour.'
+
+[pagination]
+  pagerSize = 12
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[outputs]
+  home = ['html', 'rss']
+  section = ['html', 'rss']
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[imaging]
+  resampleFilter = 'Lanczos'
+  [imaging.jpeg]
+    quality = 82
+  [imaging.webp]
+    quality = 82
