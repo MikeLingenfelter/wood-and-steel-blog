@@ -2,6 +2,7 @@ baseURL = 'https://woodandsteelworkshoppe.com/'
 locale = 'en-us'
 title = 'Wood and Steel Workshoppe'
 copyright = 'Wood and Steel Workshoppe'
+enableRobotsTXT = true
 
 [params]
   description = 'A maker blog: woodworking, metalworking, 3D printing, CAD and the occasional detour.'
